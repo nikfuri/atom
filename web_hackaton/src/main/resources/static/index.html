@@ -1,6 +1,7 @@
 <script>
-  var host = "wtfis.ru";
+  var host = localhost;
   var port = 8080;
+
 </script>
 
 <html>
@@ -49,8 +50,12 @@
         height: 30px; /* Height of the footer */
         background: #336666;
     }
+
 </style>
 
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+</head>
 <body>
 <div id="header">
     <form method="POST" id="nameform" action="javascript:void(null);" onsubmit="login()">
@@ -88,6 +93,7 @@ function loadHistory() {
 }
 setInterval(loadHistory, 1000);
 
+
 </script>
 <script>
 function say() {
@@ -110,6 +116,7 @@ function say() {
    });
 }
 
+
 </script>
 <script>
 function login() {
@@ -128,4 +135,5 @@ function login() {
        console.log(jqXHR.status + " " + jqXHR.statusText + ". " + jqXHR.responseText);
    });
 }
+
 </script>
