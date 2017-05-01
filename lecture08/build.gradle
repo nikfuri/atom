@@ -8,6 +8,7 @@ dependencies {
     compile rootProject.libraries.websocketclient
     compile rootProject.libraries.websocketserver
     compile rootProject.libraries.websocketapi
+    compile group: 'com.google.code.gson', name: 'gson', version: '2.8.0'
 }
 
 jar {

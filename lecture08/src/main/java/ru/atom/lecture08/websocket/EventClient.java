@@ -1,8 +1,11 @@
 package ru.atom.lecture08.websocket;
 
+import com.google.gson.Gson;
 import org.eclipse.jetty.websocket.api.Session;
 import org.eclipse.jetty.websocket.client.WebSocketClient;
 import org.eclipse.jetty.websocket.client.masks.ZeroMasker;
+import ru.atom.lecture08.websocket.message.Message;
+import ru.atom.lecture08.websocket.message.Topic;
 
 import java.net.URI;
 import java.util.concurrent.Future;
@@ -23,8 +26,12 @@ public class EventClient {
                 // Wait for Connect
                 Session session = fut.get();
                 // Send a message
+                Message msg = new Message(Topic.PLANT_BOMB, "{}");
+
+                Gson gson = new Gson();
+                String json = gson.toJson(msg);
                 //TODO TASK: implement sending Message with type HELLO and your name as data
-                session.getRemote().sendString("Hello");
+                session.getRemote().sendString(json);
                 // Close session
                 session.close();
             } finally {

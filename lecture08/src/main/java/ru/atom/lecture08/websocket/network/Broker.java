@@ -8,6 +8,9 @@ import ru.atom.lecture08.websocket.message.Message;
 import ru.atom.lecture08.websocket.message.Topic;
 import ru.atom.lecture08.websocket.util.JsonHelper;
 
+import static ru.atom.lecture08.websocket.message.Topic.MOVE;
+import static ru.atom.lecture08.websocket.message.Topic.PLANT_BOMB;
+
 public class Broker {
     private static final Logger log = LogManager.getLogger(Broker.class);
 
@@ -23,9 +26,12 @@ public class Broker {
     }
 
     public void receive(@NotNull Session session, @NotNull String msg) {
-        log.info("RECEIVED: " + msg);
         Message message = JsonHelper.fromJson(msg, Message.class);
-        //TODO TASK2 implement message processing
+        if (message.getTopic() != MOVE && message.getTopic() != PLANT_BOMB) {
+            log.info("BAAAAAD");
+            return;
+        }
+        log.info("RECEIVED: " + msg);
     }
 
     public void send(@NotNull String player, @NotNull Topic topic, @NotNull Object object) {
